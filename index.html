@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>I don't know yet</title>
+  <title>Project 5</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="style.css">
 
-   <style>
-   	html, body { height: 100%; margin: 0; padding: 0; }
-    #map {
+    <!--
+    <style>
+   	  html, body { height: 100%; margin: 0; padding: 0; }
+      #map {
         height: 100%;
       }
     </style>
+    -->
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh7f-89owQdNx-ihJWQcnZWL6XP9gcqdQ"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh7f-89owQdNx-ihJWQcnZWL6XP9gcqdQ&libraries=places"></script>
+    <!--
     <script>
       function initialize() {
         var mapCanvas = document.getElementById('map');
@@ -23,13 +29,30 @@
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
+-->
   </head>
 
 
   <body>
-    <div id="map"></div>
+    <!-- this search box is not on top of the map - need to fix with CSS
+      calls doSearch knockout function from app.js
+  -->
+    <form id="search" data-bind = "submit:doSearch"> <!-- search-container -->
+      <label for="search"> Search </label>
+      <input type="search" id="search-box" value="" data-bind="textInput: searchTxt" value=""  > <!--autocomplete = "on" size="100" -->
+    </form>
+
+    <div id ="map-list-container">
+      <ul id="list-view" data-bind="foreach: locationsArray">
+        <li class="list-view-item"data-bind="text: $data,event:{mouseover: $parent.overVenueItem.bind($data, $index()),mouseout: $parent.outVenueItem.bind($data, $index())}"
+        </li>
+      </ul>
+      <div id= "map"></div>
+    </div>
+
     <script src="knockout-3.4.0.js"></script>
-	<script src="app.js"></script>
+    <script src="jquery-2.1.4.min.js"></script>
+	  <script src="app.js"></script>
 
   </body>
 </html>
