@@ -3,7 +3,10 @@
  Google Maps API
  Foursquare API
  Knockout.js
- ajax (not sure if really needed)
+ ajax
+
+# How to run
+Open index.html
 
 # Sources
 Multiple topics from:
