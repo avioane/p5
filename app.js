@@ -87,26 +87,24 @@ var MapViewModel = function() {
     	//retrieve the information from foursquare
 		$.getJSON(fsURI,function(data){
 				venuesDetails = data.response.venues[0];
-            	venueAddress = venuesDetails.location.address;
-        		venueURL = venuesDetails.url;
-        		if(venueAddress){
-            		$fsContent.append('<p>'+ venueAddress +'</p>');
-        		}else{
-            		$fsContent.append('<p> Address not found </p>');
-        		}
-        		if(venueURL){
+				if(venuesDetails.location.address !== null && venuesDetails.location.address !== undefined) {
+					venueAddress = venuesDetails.location.address;
+					$fsContent.append('<p>'+ venueAddress +'</p>');
+				}
+
+            	if(venuesDetails.url !== null && venuesDetails.url !== undefined) {
+            		venueURL = venuesDetails.url;
             		$fsContent.append('<a href="' + venueURL +'">' + venueURL + '</a>');
-        		}else{
-            		$fsContent.append('<p > URL not found </p>');
-        		}
+            	}
+
 			}).error(function(e){
-				$fsContent.text('There is an error');
+				$fsContent.text('Unexpected error while retrieving FourSquare data');
 				return false;
 			});
 		},
 
 	// doSearch is called from index.html
-	 //start the observable properties for data-binding, the search function and event handlers for mouseover	and mouseout events
+	// start the observable properties for data-binding, the search function and event handlers for mouseover	and mouseout events
 	self.searchTxt = ko.observable(),
 	self.locationsArray = ko.observableArray([]),
 	self.doSearch = function(formElement){
