@@ -21,3 +21,5 @@ https://developers.google.com/maps/documentation/javascript/examples/place-searc
 http://www.w3.org/WAI/tutorials/forms/labels/
 http://stackoverflow.com/questions/17163248/whats-the-advantage-of-using-var-self-this-in-knockout-js-view-models
 http://stackoverflow.com/questions/20997672/google-maps-places-is-undefined
+
+http://www.loginradius.com/engineering/step-by-step-tutorial-to-customize-your-google-map-markers/

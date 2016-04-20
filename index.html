@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <title>Project 5</title>
+
+<head>
+    <title>Project 5</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
-
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh7f-89owQdNx-ihJWQcnZWL6XP9gcqdQ&libraries=places"></script>
-
-  </head>
-
-
-  <body>
-    <form id="search" data-bind = "submit:doSearch"> <!-- search-container -->
-      <label for="search"> Search </label>
-      <input type="search" id="search-box" value="" data-bind="textInput: searchTxt" value=""  > <!--autocomplete = "on" size="100" -->
-    </form>
-
-    <div id ="map-list-container">
-      <ul id="list-view" data-bind="foreach: locationsArray">
-        <li class="list-view-item"data-bind="text: $data,event:{mouseover: $parent.overVenueItem.bind($data, $index()),mouseout: $parent.outVenueItem.bind($data, $index())}"
-        </li>
-      </ul>
-      <div id= "map"></div>
+    <link rel="stylesheet" href="foundation.css"/>
+    <script async src="knockout-3.4.0.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <div>
+        <input type="search" placeholder="Find food in Mundelein" data-bind="textInput:query">
     </div>
-
-    <script src="knockout-3.4.0.js"></script>
-    <script src="jquery-2.1.4.min.js"></script>
-	  <script src="app.js"></script>
-
-  </body>
+    <div >
+        <div>
+            <div>
+                <h1>Locations</h1>
+                <ul data-bind="foreach: filterLocations">
+                    <li><a data-bind="click: $parent.openInfoWindow" href="#"><span data-bind="text: title"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="map" class="map">
+    </div>
+</body>
 </html>
