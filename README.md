@@ -1,12 +1,11 @@
 # Project 5 - Neighborhood Map
 
- Google Maps API
- Foursquare API
+ Google Maps API,
+ Foursquare API,
  Knockout.js
- ajax
 
 # How to run
-Open index.html
+Download the whole repository, then open index.html
 
 # Sources
 Multiple topics from:
